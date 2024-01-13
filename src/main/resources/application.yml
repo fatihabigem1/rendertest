@@ -1,0 +1,12 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://mysqldb:3306/test
+    username: root
+    password: test
+    show-sql: true
+
+server:
+  port: 7414
