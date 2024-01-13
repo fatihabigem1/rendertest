@@ -12,3 +12,4 @@ CMD ["java", "-jar", "testDriven.jar"]
 
 #updated from git and will be merged with
 #git fetch origin
+# echo "test"
