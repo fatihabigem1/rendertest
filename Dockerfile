@@ -9,3 +9,6 @@ COPY ./testDriven.jar /app
 
 # Specify the command to run your application
 CMD ["java", "-jar", "testDriven.jar"]
+
+#updated from git and will be merged with
+#git fetch origin
