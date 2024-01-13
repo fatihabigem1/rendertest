@@ -11,16 +11,30 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.testDriven.testDriven.dal.CustomObject;
+import com.testDriven.testDriven.dal.NormalOrder;
+import com.testDriven.testDriven.dal.Order;
 
 @RestController
 @RequestMapping("/api")
 public class testController {
 
 	
+	private Order normalOrder; 
+	private Order urgentOrder;
+	
+	
 	@GetMapping("/test")
 	public String test() {
 		return "test";
 	}
+	
+	public testController(Order _normalOrder, Order _urgentOrder) 
+	{
+		this.normalOrder = _normalOrder;
+		this.urgentOrder = _urgentOrder;
+	}
+	
+	public testController() {}
 	
 	@GetMapping("/add")
 	public String add(@RequestParam int a, @RequestParam int b) {
@@ -59,6 +73,27 @@ public class testController {
 	        // Return the list in the ResponseEntity with a 200 OK status
 	        return ResponseEntity.ok(customObjectList);
 	    }
+	   
+	   @GetMapping("/normalOrder")
+	   public String processNormalOrder() {
+		   NormalOrder normalOrder = new NormalOrder();
+		   if (normalOrder != null) {
+			   
+	            normalOrder.process();
+	            
+	        }
+		   return "Normal order processed";
+	   }
+	   
+	   @GetMapping("/urgentOrder")
+	   public String processUrgentOrder() {
+		   if (urgentOrder != null) {
+	            urgentOrder.process();
+	            return "Urgent order processed";
+	        } else {
+	            return "Urgent order is not available";
+	        }
+	   }
 	
 }
 
